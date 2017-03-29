@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Class="AgendamentoTestDrive.AgendamentoView" Title="{Binding Veiculo.Nome}">
+	<ContentPage.Padding>
+		<!--<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />-->
+	</ContentPage.Padding>
+	<StackLayout>
+		<TableView Intent="Form" BackgroundColor="Transparent">
+			<TableRoot>
+				<TableSection Title="Seus Dados">
+					<EntryCell Label="Nome:" Placeholder="Nome completo" Text="{Binding Nome}" Keyboard="Text" />
+					<EntryCell Label="Fone:" Placeholder="Telefone celular" Text="{Binding Fone}" Keyboard="Telephone" />
+					<EntryCell Label="E-mail:" Placeholder="E-mail para contato" Text="{Binding Email}" Keyboard="Email" />
+					<EntryCell Label="Idade:" Placeholder="Em anos" Text="{Binding Idade}" Keyboard="Numeric" PropertyChanged="Handle_PropertyChanged" />
+				</TableSection>
+				<TableSection Title="Agendamento">
+					<ViewCell>
+						<StackLayout Orientation="Horizontal" Margin="12,0,0,0">
+							<Label Text="Data:" />
+							<DatePicker VerticalOptions="EndAndExpand" Date="{Binding DataAgendamento}" Format="dd-MM-yyyy" />
+						</StackLayout>
+					</ViewCell>
+					<ViewCell>
+						<StackLayout Orientation="Horizontal" Margin="12,0,0,0">
+							<Label Text="Horário:" />
+							<TimePicker VerticalOptions="EndAndExpand" Time="{Binding HoraAgendamento}" />
+						</StackLayout>
+					</ViewCell>
+				</TableSection>
+				<TableSection Title="Revisão do seu veículo">
+					<TextCell Text="{Binding Veiculo.Nome}" TextColor="Black" Detail="{Binding Veiculo.PrecoFormatado, StringFormat='Valor do veículo: {0}'}" />
+					<TextCell Text="{Binding Veiculo.PrecoTotalFormatado}" />
+				</TableSection>
+			</TableRoot>
+		</TableView>
+		<Button Text="Agendar" Clicked="Button_Clicked" />
+	</StackLayout>
+</ContentPage>

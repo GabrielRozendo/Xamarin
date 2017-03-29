@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AgendamentoTestDrive.DetalheView" Title="{Binding Veiculo.Nome}">
+	<ContentPage.Padding>
+		<!-- <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />-->
+	</ContentPage.Padding>
+	<StackLayout Padding="25">
+		<TableView Intent="Settings" BackgroundColor="Transparent">
+			<TableRoot>
+				<TableSection Title="Acessórios" >
+					<SwitchCell Text="{Binding Veiculo.TextoFreioAbs}" On="{Binding TemFreioAbs, Mode=TwoWay}" />
+					<SwitchCell Text="{Binding Veiculo.TextoArCondicionado}" On="{Binding TemArCondicionado, Mode=TwoWay}" />
+					<SwitchCell Text="{Binding Veiculo.TextoMp3Player}" On="{Binding TemMp3Player, Mode=TwoWay}" />
+					<TextCell Text="{Binding ValorTotal}" TextColor="Red" Detail="{Binding Veiculo.PrecoFormatado, StringFormat='Valor somente do veículo: {0}'}" DetailColor="Gray"/>
+				</TableSection>
+			</TableRoot>
+		</TableView>
+		<Label Text="Esta é a página de detalhe" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+		<Button x:Name="buttonProximo" Text="Próximo" Clicked="buttonProximo_Clicked" VerticalOptions="End" HorizontalOptions="Center" />
+	</StackLayout>
+</ContentPage>
