@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
+using System.Net.Http;
 
 namespace AgendamentoTestDrive
 {
@@ -53,7 +56,12 @@ namespace AgendamentoTestDrive
 		public DetalheViewModel(Veiculo veiculo)
 		{
 			this.Veiculo = veiculo;
+			ProximoCommand = new Command(() =>
+			{
+				MessagingCenter.Send(Veiculo, "Proximo");
+			});
 		}
+
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -61,5 +69,7 @@ namespace AgendamentoTestDrive
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 		}
+
+		public ICommand ProximoCommand { get; set; }
 	}
 }

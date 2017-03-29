@@ -6,7 +6,7 @@
 	<ContentPage.Padding>
 		<!--<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />-->
 	</ContentPage.Padding>
-	<ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="25" ItemTapped="Handle_ItemTapped">
+	<ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="25" SelectedItem="{Binding VeiculoSelecionado}">
 		<ListView.ItemTemplate>
 			<DataTemplate>
 				<TextCell Text="{Binding Nome}" Detail="{Binding PrecoFormatado}" />

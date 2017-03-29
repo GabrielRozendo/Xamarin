@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Input;
+using Xamarin.Forms;
 namespace AgendamentoTestDrive
 {
 	public class AgendamentoViewModel
@@ -7,6 +9,10 @@ namespace AgendamentoTestDrive
 		{
 			this.Agendamento = new Agendamento();
 			this.Agendamento.Veiculo = veiculo;
+			AgendarCommand = new Command(() =>
+			{
+				MessagingCenter.Send<Agendamento>(this.Agendamento, "Agendamento");
+			});
 		}
 
 		#region Propriedades
@@ -55,5 +61,6 @@ namespace AgendamentoTestDrive
 		}
 		#endregion
 
+		public ICommand AgendarCommand { get; set; }
 	}
 }

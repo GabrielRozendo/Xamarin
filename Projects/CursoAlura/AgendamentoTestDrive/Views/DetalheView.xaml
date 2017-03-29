@@ -15,6 +15,6 @@
 			</TableRoot>
 		</TableView>
 		<Label Text="Esta é a página de detalhe" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-		<Button x:Name="buttonProximo" Text="Próximo" Clicked="buttonProximo_Clicked" VerticalOptions="End" HorizontalOptions="Center" />
+		<Button x:Name="buttonProximo" Text="Próximo" Command="{Binding ProximoCommand}" VerticalOptions="End" HorizontalOptions="Center" />
 	</StackLayout>
 </ContentPage>

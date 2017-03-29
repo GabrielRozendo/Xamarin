@@ -30,9 +30,12 @@ namespace AgendamentoTestDrive
 			}
 		}
 
-		void Button_Clicked(object sender, System.EventArgs e)
+		protected override void OnAppearing()
 		{
-			string mensagem =
+			base.OnAppearing();
+			MessagingCenter.Subscribe<Agendamento>(this, "Agendamento", (obj) =>
+			{
+				string mensagem =
 								$"Nome: {ViewModel.Agendamento.Nome}{Environment.NewLine}" +
 						 		$"Fone: {ViewModel.Agendamento.Fone}{Environment.NewLine}" +
 								$"E-mail: {ViewModel.Agendamento.Email}{Environment.NewLine}" +
@@ -43,10 +46,17 @@ namespace AgendamentoTestDrive
 								$"Hora Agendamento: {ViewModel.Agendamento.HoraAgendamento.ToString(@"hh\:mm")}{Environment.NewLine}" +
 
 								$"{Environment.NewLine}" +
-								$"Veículo: {ViewModel.Agendamento.Veiculo.Nome}" +
+								$"Veículo: {ViewModel.Agendamento.Veiculo.Nome}{Environment.NewLine}" +
 								$"{ViewModel.Agendamento.Veiculo.PrecoTotalFormatado}";
 
-			DisplayAlert("Agendamento", mensagem, "OK");
+				DisplayAlert("Agendamento", mensagem, "OK");
+			});
+		}
+
+		protected override void OnDisappearing()
+		{
+			base.OnDisappearing();
+			MessagingCenter.Unsubscribe<Agendamento>(this, "Agendamento");
 		}
 	}
 }
